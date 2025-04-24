@@ -1,12 +1,14 @@
 pipeline {
     agent any
-    
+    tools {
+        maven "M3"
+    }
     stages {
-        stage('Hello') {
+        stage('Build') {
             steps {
-                echo 'Hello World'
+                git 'https://github.com/SEONJOO-JANG/kosta-demo.git'
+                sh "mvn clean package"
             }
         }
     }
 }
-
